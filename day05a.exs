@@ -1,6 +1,6 @@
 defmodule Day05a do
   @vowels ["a", "e", "i", "o", "u"]
-  @bad_strings_regex ~r/ab|cd|pq|xy/
+  @bad_strings ["ab", "cd", "pq", "xy"]
 
   def run do
     File.stream!("./day05.in.txt")
@@ -28,7 +28,7 @@ defmodule Day05a do
   defp double_letters?(word),          do: double_letters?(String.codepoints(word))
 
   defp contains_bad_string?(word) do
-    word =~ @bad_strings_regex
+    word |> String.contains?(@bad_strings)
   end
 end
 
